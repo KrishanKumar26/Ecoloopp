@@ -1,0 +1,22 @@
+# EcoLoop Backend Dependencies
+# Python 3.11+
+
+# FastAPI framework
+fastapi==0.115.4
+
+# ASGI server for running FastAPI
+uvicorn[standard]==0.32.0
+
+# CORS middleware (included in FastAPI, listed for clarity)
+# fastapi already includes starlette with CORS support
+
+# Database - PostgreSQL with async support
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.32.0
+greenlet==3.5.6
+
+# Database migrations
+alembic==1.14.1
+
+# Environment variable management
+python-dotenv==1.0.1
