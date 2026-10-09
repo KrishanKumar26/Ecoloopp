@@ -12,7 +12,7 @@ export default function Footer() {
               <p className="text-xs text-gray-500">Every item recycled makes a difference</p>
             </div>
           </div>
-          
+
           <div className="text-center md:text-right">
             <p className="text-sm text-gray-600">
               Built for responsible e-waste disposal

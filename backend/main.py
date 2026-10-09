@@ -9,6 +9,7 @@ from datetime import datetime
 from contextlib import asynccontextmanager
 
 from database import init_db, close_db, check_database_connection
+from routers import auth, classification, pickup, ecopoints
 
 
 @asynccontextmanager
@@ -52,6 +53,28 @@ app.add_middleware(
     allow_methods=["*"],  # Allow all HTTP methods (GET, POST, PUT, DELETE, etc.)
     allow_headers=["*"],  # Allow all headers
 )
+
+
+# ============================================================================
+# Register Routers
+# ============================================================================
+
+# Include authentication router
+app.include_router(auth.router)
+
+# Include classification router
+app.include_router(classification.router)
+
+# Include pickup router
+app.include_router(pickup.router)
+
+# Include ecopoints router
+app.include_router(ecopoints.router)
+
+
+# ============================================================================
+# Root Endpoints
+# ============================================================================
 
 
 @app.get("/")

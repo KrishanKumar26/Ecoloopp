@@ -7,7 +7,7 @@ import enum
 import uuid
 from datetime import datetime, timedelta
 from sqlalchemy import (
-    Column, String, Text, Integer, Boolean, Numeric, 
+    Column, String, Text, Integer, Boolean, Numeric,
     DateTime, Enum, ForeignKey, Index, CheckConstraint, UniqueConstraint
 )
 from sqlalchemy.dialects.postgresql import UUID, ARRAY
@@ -46,7 +46,12 @@ class User(Base):
     email = Column(String(255), unique=True, nullable=False, index=True)
     phone = Column(String(20), unique=True, nullable=True)
     password_hash = Column(Text, nullable=False)
-    role = Column(Enum(UserRole), nullable=False, default=UserRole.USER, index=True)
+    role = Column(
+        Enum(UserRole, values_callable=lambda enum_cls: [member.value for member in enum_cls]),
+        nullable=False,
+        default=UserRole.USER,
+        index=True
+    )
     eco_points = Column(Integer, nullable=False, default=0)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
@@ -134,7 +139,7 @@ class Pickup(Base):
     classification_id = Column(UUID(as_uuid=True), ForeignKey("classifications.classification_id"), nullable=True)
     item_description = Column(Text, nullable=False)
     scheduled_at = Column(DateTime(timezone=True), nullable=False, index=True)
-    
+
     # Address components
     address_street = Column(String(255), nullable=False)
     address_city = Column(String(100), nullable=False)
@@ -142,13 +147,18 @@ class Pickup(Base):
     address_pincode = Column(String(20), nullable=False)
     address_lat = Column(Numeric(9, 6), nullable=False)
     address_lng = Column(Numeric(9, 6), nullable=False)
-    
+
     # OTP for verification - stored as plain text since trust auth is used locally
     # In production, consider hashing OTPs
     otp = Column(String(6), nullable=False)
     otp_expires_at = Column(DateTime(timezone=True), nullable=False)
-    
-    status = Column(Enum(PickupStatus), nullable=False, default=PickupStatus.PENDING, index=True)
+
+    status = Column(
+        Enum(PickupStatus, values_callable=lambda enum_cls: [member.value for member in enum_cls]),
+        nullable=False,
+        default=PickupStatus.PENDING,
+        index=True
+    )
     cancellation_reason = Column(Text, nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
@@ -165,7 +175,8 @@ class Pickup(Base):
         Validate OTP against stored value and expiry time.
         Should be called in application logic, not exposed in API.
         """
-        if datetime.utcnow() > self.otp_expires_at:
+        from datetime import datetime, timezone
+        if datetime.now(timezone.utc) > self.otp_expires_at:
             return False
         return self.otp == provided_otp
 

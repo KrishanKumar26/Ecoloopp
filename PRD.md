@@ -1,7 +1,7 @@
 # EcoLoop — Product Requirements Document (PRD)
 
-**Version:** 1.0  
-**Date:** October 2026  
+**Version:** 1.0
+**Date:** October 2026
 **Status:** Draft — Hackathon MVP
 
 ---

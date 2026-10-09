@@ -18,8 +18,8 @@ export default function Home() {
                 Turn Your E-Waste Into Environmental Impact
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Most households have no easy way to dispose of electronics responsibly. 
-                EcoLoop connects you with certified recyclers—snap a photo, get AI-powered 
+                Most households have no easy way to dispose of electronics responsibly.
+                EcoLoop connects you with certified recyclers—snap a photo, get AI-powered
                 safety tips, schedule a free pickup, and earn EcoPoints for doing the right thing.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -185,7 +185,7 @@ export default function Home() {
               Ready to Make an Impact?
             </h2>
             <p className="text-eco-green-100 text-lg mb-8 max-w-2xl mx-auto">
-              Join the movement for responsible e-waste disposal. Every item you recycle 
+              Join the movement for responsible e-waste disposal. Every item you recycle
               reduces harmful emissions and conserves natural resources.
             </p>
             <Link

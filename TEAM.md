@@ -1,6 +1,6 @@
 # EcoLoop — Team
 
-**Hackathon:** EcoLoop  
+**Hackathon:** EcoLoop
 **Theme:** Turn Waste Into Value
 
 ---

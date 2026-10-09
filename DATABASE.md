@@ -1,6 +1,6 @@
 # EcoLoop — Database Schema
 
-**Database:** PostgreSQL (primary) + Redis (caching / OTP TTL)  
+**Database:** PostgreSQL (primary) + Redis (caching / OTP TTL)
 **Conventions:**
 - All IDs are UUIDs v4.
 - All timestamps are UTC ISO 8601.

@@ -1,7 +1,7 @@
 # EcoLoop — API Reference
 
-**Base URL:** `https://api.ecoloop.app/v1`  
-**Auth:** Bearer JWT in `Authorization` header  
+**Base URL:** `https://api.ecoloop.app/v1`
+**Auth:** Bearer JWT in `Authorization` header
 **Content-Type:** `application/json` (multipart/form-data for uploads)
 
 ---

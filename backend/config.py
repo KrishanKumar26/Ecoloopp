@@ -24,6 +24,13 @@ class Settings:
     # Application Settings
     ENV: str = os.getenv("ENV", "development")
 
+    # JWT Authentication Settings
+    JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY", "")
+    JWT_ALGORITHM: str = os.getenv("JWT_ALGORITHM", "HS256")
+    JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = int(
+        os.getenv("JWT_ACCESS_TOKEN_EXPIRE_MINUTES", "30")
+    )
+
     @property
     def DATABASE_URL(self) -> str:
         """

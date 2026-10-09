@@ -1,7 +1,7 @@
 # EcoLoop — AI Context & Classification Guide
 
-**Service:** Python + FastAPI  
-**Location:** `/ai/`  
+**Service:** Python + FastAPI
+**Location:** `/ai/`
 **Model:** Vision-based image classification (e.g., fine-tuned MobileNetV3 or GPT-4o Vision API)
 
 ---
@@ -121,7 +121,7 @@ CO₂ savings per kg by category (approximate emission factors):
 | APPLIANCE | 6                               |
 | DEFAULT   | 10                              |
 
-**Formula:**  
+**Formula:**
 `co2_saved_kg = estimated_weight_kg × emission_factor[category]`
 
 ---
@@ -164,10 +164,10 @@ Respond ONLY with valid JSON. Do not include any explanation outside the JSON.
 
 ## Internal API Endpoint
 
-`POST /internal/classify`  
+`POST /internal/classify`
 Called by the backend only. Not exposed publicly.
 
-**Request:** `multipart/form-data` with `images[]`  
+**Request:** `multipart/form-data` with `images[]`
 **Response:** JSON as per the AI Response Contract above.
 
 ---
